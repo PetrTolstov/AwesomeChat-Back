@@ -4,13 +4,32 @@ const http = require('http');
 const { Server } = require("socket.io");
 const cors = require("cors")
 
-app.use(cors())
+//app.use(cors())
+app.use(function (req, res, next) {
+
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
+});
 
 const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: "https://agile-harbor-79562.herokuapp.com/"  //"https://awesome-app-back.herokuapp.com/:3001"
+        origin: "*",  //"https://awesome-app-back.herokuapp.com/:3001"
+
     }
 });
 
