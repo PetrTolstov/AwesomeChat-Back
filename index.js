@@ -10,8 +10,10 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: "https://awesome-app-back.herokuapp.com/:3001",
+        origin: "*",
         methods: ["GET", "POST"],
+        allowedHeaders: ["my-custom-header"],
+        credentials: true
     }
 });
 
