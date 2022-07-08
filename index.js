@@ -10,7 +10,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: "https://awesome-app-back.herokuapp.com/:3001"
+        origin: "https://agile-harbor-79562.herokuapp.com/"  //"https://awesome-app-back.herokuapp.com/:3001"
     }
 });
 
