@@ -9,7 +9,7 @@ const corsOptions = {
     optionsSuccessStatus: 204 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
-app.use(cors(corsOptions))
+app.use(cors())
 /*app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
