@@ -4,8 +4,13 @@ const http = require('http');
 const { Server } = require("socket.io");
 const cors = require("cors")
 
-//app.use(cors())
-app.use(function (req, res, next) {
+const corsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 204 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+app.use(cors(corsOptions))
+/*app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -23,6 +28,7 @@ app.use(function (req, res, next) {
     // Pass to next layer of middleware
     next();
 });
+*/
 
 const server = http.createServer(app);
 
