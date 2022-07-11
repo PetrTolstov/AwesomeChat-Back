@@ -47,7 +47,10 @@ io.on('connection', (socket) => {
     socket.on('send_message', (data) => {
         data.user = socket.id
         console.log(data)
-        socket.broadcast.emit("receive_message", data)
+        //socket.broadcast.emit("receive_message", data)
+        socket.on('receive_message', (data) => {
+            io.emit('receive_message', data);
+        });
     });
 });
 
