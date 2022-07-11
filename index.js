@@ -3,6 +3,7 @@ const app = express();
 const http = require('http');
 const { Server } = require("socket.io");
 const cors = require("cors")
+require("dotenv").config()
 
 const corsOptions = {
     origin: '*',
@@ -48,8 +49,8 @@ io.on('connection', (socket) => {
     });
 });
 
-server.listen(38660, () => {
-    console.log('listening on *:38660');
+server.listen(process.env.PORT || 3000, () => {
+    console.log('listening on *:' + process.env.PORT || 3000);
 });
 
 /*
