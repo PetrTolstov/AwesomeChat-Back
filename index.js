@@ -5,6 +5,8 @@ const { Server } = require("socket.io");
 const cors = require("cors")
 require("dotenv").config()
 
+const PORT = process.env.PORT || 3000
+
 const corsOptions = {
     origin: '*',
     optionsSuccessStatus: 204 // some legacy browsers (IE11, various SmartTVs) choke on 204
@@ -49,8 +51,8 @@ io.on('connection', (socket) => {
     });
 });
 
-server.listen(process.env.PORT || 3000, () => {
-    console.log('listening on *:' + process.env.PORT || 3000);
+server.listen(PORT, () => {
+    console.log('listening on *:' + PORT);
 });
 
 /*
